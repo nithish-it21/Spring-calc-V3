@@ -1,0 +1,31 @@
+.outline-box-calc {
+    padding: 20px;
+    display: flex;
+    border: 8px solid black;
+    height: 300px;
+    width: 300px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background-color: #728d78;
+}
+
+.display_calc {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    background-color: #eee;
+    font-size: 20px;
+    border: 2px solid #ccc;
+    margin-bottom: 10px;
+}
+
+button {
+    width: 60px;
+    height: 40px;
+    font-size: 18px;
+}
