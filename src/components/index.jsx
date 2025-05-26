@@ -9,6 +9,21 @@ const Calc = () => {
     const handleClick = (item) => {
         setDisplay(prev => prev + item);
     };
+    
+    const fetchcall = (displaystring) => {
+        fetch(`/api/calc/fintot?input=${displaystring}`)
+            .then(response => {
+                if (!response.ok) return response.text().then(text => { throw new Error(text); });
+                return response.text();
+            })
+            .then(result => {
+                setDisplay(result);
+            })
+            .catch(error => {
+                setDisplay(error)
+            })
+            
+    }
 
     return (
         <div className="outline-box-calc">
@@ -20,7 +35,13 @@ const Calc = () => {
                     onClick={() => {
                         if (item === "Clear") setDisplay("");
                         else if (item === "=") {
-                            // You can handle evaluation later or connect to backend
+                            let org_var;
+                            if (isNaN(display[display.length - 1])) {
+                                org_var = display.slice(0, -1);
+                            } else {
+                                org_var = display;
+                            }
+                            fetchcall(org_var);                           
                         } else handleClick(item);
                     }}
                 />
