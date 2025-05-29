@@ -11,7 +11,7 @@ const Calc = () => {
     };
     
     const fetchcall = (displaystring) => {
-        fetch(`/api/calc/fintot?input=${displaystring}`)
+        fetch(`/api/calc/fintot?input=${encodeURIComponent(displaystring)}`)
             .then(response => {
                 if (!response.ok) return response.text().then(text => { throw new Error(text); });
                 return response.text();
@@ -20,9 +20,8 @@ const Calc = () => {
                 setDisplay(result);
             })
             .catch(error => {
-                setDisplay(error)
-            })
-            
+                setDisplay(error.toString());
+            })         
     }
 
     return (
